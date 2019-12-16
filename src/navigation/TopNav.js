@@ -1,7 +1,19 @@
 import React, { useState } from 'react';
 import '../sass/_base.scss';
 
-const TopNav = () => {
+const TopNav = props => {
+    const [searchTerm, setSearchTerm] = React.useState("");
+    const [searchResults, setSearchResults] = React.useState([]);
+    const handleChange = event => {
+    setSearchTerm(event.target.value);
+    };
+
+    //*React.useEffect(props => {
+       //*     const results = people.filter(person =>
+       //*       person.toLowerCase().includes(searchTerm)
+       //*     );
+       //*     setSearchResults(results);
+       //*   }, [searchTerm]);
     const [IsClicked, setUserIsClicked] = useState(false);
 
     const openUserHandler = () =>{
@@ -18,7 +30,12 @@ const TopNav = () => {
             <img src="/img/logo.png" alt="BeyTech logo" className="logo"/>
 
             <form action="#" className="search">
-                <input type="text" className="search__input" placeholder="Student Search"/>
+                <input type="text" 
+                className="search__input" 
+                placeholder="Student Search"
+                value={searchTerm}
+                onChange={handleChange}
+                />
                 <button className="search__button">
                     <svg className="search__icon">
                         <use xlinkHref="img/sprite.svg#icon-magnifying-glass"/>

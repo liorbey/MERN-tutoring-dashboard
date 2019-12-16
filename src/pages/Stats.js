@@ -1,48 +1,47 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import '../sass/_base.scss'
-
+import '../components/TotalStudents'
+import TotalStudents from '../components/TotalStudents'
 const Stats = () =>{
     return(
-        <main class="student-view">
-        <div class="detail">
-            <div class="description">
-                <p class="paragraph">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi nisi dignissimos debitis ratione sapiente saepe. Accusantium cumque, quas, ut corporis incidunt deserunt quae architecto voluptate.
+        <Fragment>
+        <main className="student-view">
+        <div className="detail">
+            <div className="description">
+                <p className="paragraph">
                 </p>
-                <p class="paragraph">
+                <p className="paragraph">
                     Accusantium cumque, quas, ut corporis incidunt deserunt quae architecto voluptate delectus, inventore iure aliquid aliquam.
                 </p>
-                <ul class="list">
+                <ul className="list">
                     
                 </ul>
-                <div class="recommend">
-                    <p class="recommend__count">
+                <div className="recommend">
+                    <p className="recommend__count">
                     Accusantium cumque
                     </p>
-                    <div class="recommend__friends">
+                    <div className="recommend__friends">
 
                     </div>
                 </div>
             </div>
 
-            <div class="user-views">
-                <figure class="view">
-                    <blockquote class="view__text">
+            <div className="user-views">
+                <figure className="view">
+                    <blockquote className="view__text">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga doloremque architecto dicta animi, totam, itaque officia ex.
                     </blockquote>
 
                 </figure>
 
-                <figure class="view">
-                    <blockquote class="view__text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga doloremque architecto dicta animi.
-                    </blockquote>
-
+                <figure className="view">
+                <TotalStudents/>
                 </figure>
-
             </div>
         </div>
     </main>
+    </Fragment>
+
     );
 };
 export default Stats;

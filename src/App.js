@@ -15,10 +15,9 @@ import AddStudent from './pages/AddStudent';
 
 function App() {
   return (
-    <body>
-        <div class="container">
+        <div className="container">
           <TopNav/>
-            <div class="content">
+            <div className="content">
             <Router>
             <SideBar/>
               <Switch>
@@ -36,7 +35,6 @@ function App() {
             </Router>
             </div>
         </div>
-    </body>
   );
 }
 
