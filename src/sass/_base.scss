@@ -37,7 +37,7 @@ $bp-smallest: 31.25em; // 500px
 
 html {
     box-sizing: border-box;
-    font-size: 62.5%; // 1rem = 10px, 10px/16px = 62.5%
+    font-size: 72.5%; // 1rem = 10px, 10px/16px = 62.5%
 
     @media only screen and (max-width: $bp-large) {
         font-size: 50%;
@@ -615,11 +615,11 @@ body {
     box-shadow: var(--shadow-light);
     padding: 3rem;
     flex: 0 0 60%;
-    margin-right: 4.5rem;
+    margin-right: 0.5rem;
 
     @media only screen and (max-width: $bp-medium) {
-        padding: 2rem;
-        margin-right: 3rem;
+        padding: 1rem;
+        margin-right: 0.5rem;
     }
 
     @media only screen and (max-width: $bp-small) {
@@ -627,7 +627,6 @@ body {
         margin-bottom: 3rem;
     }
 }
-
 .user-views {
     flex: 1;
 

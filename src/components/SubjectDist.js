@@ -1,25 +1,28 @@
 import React, { PureComponent } from 'react';
 import {
-  Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Legend,
+    ResponsiveContainer,Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Legend,
 } from 'recharts';
+import '../sass/_base.scss'
 
 const SubjectDist = () =>{
     const data = [
         {
-          subject: 'Math Enrichment', A: 8, B: 6, fullMark: 150,
+          subject:'Python' , A: 8, B: 6, fullMark: 150,
         },
         {
-          subject: 'Web Development', A: 2, B: 7, fullMark: 150,
+          subject: 'JS', A: 2, B: 7, fullMark: 150,
         },
         {
-          subject: 'D&A with Python', A: 4, B: 6, fullMark: 150,
+          subject: 'Robotics', A: 4, B: 6, fullMark: 150,
         },
         {
-          subject: 'Arduino Robotics', A: 7, B: 4, fullMark: 150,
+          subject: 'Math', A: 7, B: 4, fullMark: 150,
         },
       ];
       return(
-        <RadarChart width={500} height={300} data={data}>
+        <div style={{ width: '100%', height: 300 }}>
+        <ResponsiveContainer>
+        <RadarChart data={data}>
         <PolarGrid />
         <PolarAngleAxis dataKey="subject" />
         <PolarRadiusAxis />
@@ -27,6 +30,8 @@ const SubjectDist = () =>{
         <Radar name="2018" dataKey="B" stroke="999" fill="#999" fillOpacity={0.6} />
         <Legend/>
         </RadarChart>
+        </ResponsiveContainer>
+        </div>
       );
 
 };

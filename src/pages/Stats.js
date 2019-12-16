@@ -9,12 +9,13 @@ const Stats = () =>{
         <main className="student-view">
         <div className="detail">
             <div className="description">
+            <h1 style={{textAlign:'center'}}>Subject Distribution</h1>
             <SubjectDist/>
             </div>
 
             <div className="user-views">
                 <figure className="view">
-
+                    dscsd
                 </figure>
 
                 <figure className="view">
