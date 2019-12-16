@@ -14,7 +14,7 @@ const TotalStudents = props =>{
     }];
     return(
         //length of students
-        <h1>total students count: {DUMMY_ARRAY.length}</h1>
+        <h1>total students: {DUMMY_ARRAY.length}</h1>
     );
 };
 
