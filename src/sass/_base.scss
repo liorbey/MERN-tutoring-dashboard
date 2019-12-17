@@ -158,6 +158,16 @@ body {
         fill: var(--color-grey-dark-2);
     }
 
+    &__drawer-box {
+        position: relative;
+    }
+
+    &__drawer {
+        margin-right: 1rem;
+        width: 6.25rem;
+        fill: var(--color-grey-dark-2);
+    }
+
     &__notification {
         font-size: .8rem;
         height: 1.75rem;
@@ -707,3 +717,5 @@ body {
     transition: all 200ms;
   }
 }
+////////////////////////////////////////
+// DROPDOWN

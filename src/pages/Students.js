@@ -3,7 +3,19 @@ import StudentList from '../components/StudentList';
 import '../sass/_base.scss'
 import TotalStudents from '../components/TotalStudents';
 import TopNav from '../navigation/TopNav';
+import Search from '../components/Search';
+
 const Students = () =>{
+    const people = [
+        "Siri",
+        "Alexa",
+        "Google",
+        "Facebook",
+        "Twitter",
+        "Linkedin",
+        "Sinkedin"
+      ];
+
     const STUDENTS = [{
         id: "s1",
         name: "Joe Rogan",
@@ -29,6 +41,7 @@ const Students = () =>{
 ];
     return(
         <Fragment>
+        {/*<Search peoples = {STUDENTS}*/}
         <StudentList items = {STUDENTS} />
         </Fragment>
     );

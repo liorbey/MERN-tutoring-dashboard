@@ -15,7 +15,7 @@ const Stats = () =>{
 
             <div className="user-views">
                 <figure className="view">
-                    dscsd
+                    Valid info
                 </figure>
 
                 <figure className="view">
