@@ -34,9 +34,11 @@ const AddStudent = () =>{
         console.log(formState.inputs); // send this to the backend!
       };
     return(
-        <form className="place-form" onSubmit={placeSubmitHandler}>
+        <form className="add-student-form" onSubmit={placeSubmitHandler}>
         <Input
+          className = "add-student-form__input"
           id="name"
+          placeholder = "name"
           element="input"
           type="text"
           label="name"
@@ -45,31 +47,37 @@ const AddStudent = () =>{
           onInput={inputHandler}
         />
         <Input
+          className = "add-student-form__input"
           id="level"
-          element="textarea"
+          placeholder="level"
+          element="input"
           label="level"
           validators={[VALIDATOR_MINLENGTH(5)]}
           errorText="Please enter a valid level"
           onInput={inputHandler}
         />
         <Input
-          id="description"
-          element="textarea"
-          label="Description"
-          validators={[VALIDATOR_MINLENGTH(5)]}
-          errorText="Please enter a valid description (at least 5 characters)."
-          onInput={inputHandler}
-        />
-        <Input
+          className = "add-student-form__input"
           id="address"
+          placeholder="address"
           element="input"
           label="Address"
           validators={[VALIDATOR_REQUIRE()]}
           errorText="Please enter a valid address."
           onInput={inputHandler}
         />
-        <button type="submit" disabled={!formState.isValid}>
-          ADD PLACE
+        <Input
+          className = "add-student-form__input"
+          id="description"
+          placeholder="description"
+          element="textarea"
+          label="Description"
+          validators={[VALIDATOR_MINLENGTH(5)]}
+          errorText="Please enter a valid description (at least 5 characters)."
+          onInput={inputHandler}
+        />
+        <button  className = "add-student-form__button" type="submit" disabled={!formState.isValid}>
+          Add Student
         </button>
       </form>
     );

@@ -148,16 +148,6 @@ body {
         background-color: var(--color-grey-light-2);
     }
 
-    &__icon-box {
-        position: relative;
-    }
-
-    &__icon {
-        height: 2.25rem;
-        width: 2.25rem;
-        fill: var(--color-grey-dark-2);
-    }
-
     &__drawer-box {
         position: relative;
     }
@@ -168,21 +158,6 @@ body {
         fill: var(--color-grey-dark-2);
     }
 
-    &__notification {
-        font-size: .8rem;
-        height: 1.75rem;
-        width: 1.75rem;
-        border-radius: 50%;
-        background-color: var(--color-primary);
-        color: #fff;
-        position: absolute;
-        top: 1.5rem;
-        right: 1.1rem;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
 
     &__user-photo {
         height: 3.75rem;
@@ -718,4 +693,66 @@ body {
   }
 }
 ////////////////////////////////////////
-// DROPDOWN
+//  ADD STUDENT FORM
+.add-student-form {
+    flex: 0 0 70%;
+    position: relative;
+    margin: 5rem;
+    display: block;
+    align-items: right;
+    justify-content: right;
+
+    @media only screen and (max-width: $bp-smallest) {
+        order: 1;
+        flex: 0 0 60%;
+    }
+
+    &__input {
+        font-family: inherit;
+        font-size: inherit;
+        color: inherit;
+        background-color: var(--color-grey-light-2);
+        border: none;
+        padding: .7rem 2rem;
+        border-radius: 100px;
+        width: 90%;
+        transition: all .2s;
+        margin: 1rem;
+
+        &:focus {
+            outline: none;
+            width: 100%;
+            background-color: var(--color-grey-light-3);
+        }
+
+        &::-webkit-input-placeholder {
+            font-weight: 100;
+            color: var(--color-grey-light-4);
+        }
+    }
+
+    &__input:focus + &__button {
+        background-color: var(--color-grey-light-3);
+    }
+
+    &__button {
+        margin: 1rem;
+        border-radius: var(--color-primary);;
+        color: black;
+        background-color: var(--color-primary-dark);
+
+        &:focus {
+            outline: none;
+        }
+
+        &:active {
+            transform: translateY(2px);
+        }
+    }
+
+    &__icon {
+        height: 2rem;
+        width: 2rem;
+        fill: var(--color-grey-dark-3);
+    }
+}

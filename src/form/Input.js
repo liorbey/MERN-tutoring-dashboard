@@ -1,6 +1,7 @@
 import React, { useReducer, useEffect } from 'react';
 
 import { validate } from '../util/validation';
+import '../sass/_base.scss';
 
 const inputReducer = (state, action) => {
   switch (action.type) {
@@ -52,6 +53,7 @@ const Input = props => {
   const element =
     props.element === 'input' ? (
       <input
+        className = {props.className}
         id={props.id}
         type={props.type}
         placeholder={props.placeholder}
@@ -61,7 +63,9 @@ const Input = props => {
       />
     ) : (
       <textarea
+        className = {props.className}
         id={props.id}
+        placeholder={props.placeholder}
         rows={props.rows || 3}
         onChange={changeHandler}
         onBlur={touchHandler}
@@ -70,13 +74,9 @@ const Input = props => {
     );
 
   return (
-    <div
-      className={`form-control ${!inputState.isValid && inputState.isTouched &&
-        'form-control--invalid'}`}
-    >
-      <label htmlFor={props.id}>{props.label}</label>
+    <div>
       {element}
-      {!inputState.isValid && inputState.isTouched && <p>{props.errorText}</p>}
+      {!inputState.isValid && inputState.isTouched && <p >{props.errorText}</p>}
     </div>
   );
 };
