@@ -1,8 +1,8 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import {
     ResponsiveContainer,Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Legend,
 } from 'recharts';
-import '../sass/_base.scss'
+import '../../sass/_base.scss'
 
 const SubjectDist = () =>{
     const data = [

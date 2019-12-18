@@ -695,12 +695,13 @@ body {
 ////////////////////////////////////////
 //  ADD STUDENT FORM
 .add-student-form {
-    flex: 0 0 70%;
-    position: relative;
+    flex: 0 0 60%;
     margin: 5rem;
-    display: block;
-    align-items: right;
-    justify-content: right;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    
 
     @media only screen and (max-width: $bp-smallest) {
         order: 1;
@@ -715,7 +716,7 @@ body {
         border: none;
         padding: .7rem 2rem;
         border-radius: 100px;
-        width: 90%;
+        width: 50%;
         transition: all .2s;
         margin: 1rem;
 

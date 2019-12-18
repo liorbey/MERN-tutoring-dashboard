@@ -1,12 +1,13 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
 
-import '../sass/_sidebar.scss'
+import '../../sass/_sidebar.scss'
 
 const SideBar = ()=>{
     return(
         <nav className="sidebar">
             <ul className="side-nav">
+
                 <li className="side-nav__item side-nav__item--active">
                 <NavLink className="side-nav__link" to="/" exact >
                         <svg className="side-nav__icon">

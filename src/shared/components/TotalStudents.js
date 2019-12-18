@@ -1,5 +1,4 @@
 import React from 'react'
-import Students from '../pages/Students';
 
 const TotalStudents = props =>{
     const DUMMY_ARRAY = [{

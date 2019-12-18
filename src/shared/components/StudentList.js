@@ -1,6 +1,5 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import StudentItem from './StudentItem';
-import TotalStudents from './TotalStudents';
 
 const StudentList = props =>{
    

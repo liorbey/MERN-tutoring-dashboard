@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react'
 import '../sass/_base.scss'
-import '../components/TotalStudents'
-import TotalStudents from '../components/TotalStudents'
-import SubjectDist from '../components/SubjectDist'
+import '../shared/components/TotalStudents'
+import TotalStudents from '../shared/components/TotalStudents'
+import SubjectDist from '../shared/components/SubjectDist'
 const Stats = () =>{
     return(
         <Fragment>
@@ -14,10 +14,9 @@ const Stats = () =>{
             </div>
 
             <div className="user-views">
-                <figure className="view">
-                    Valid info
+            <   figure className="view">
+                <h1>Pending Tasks: 10</h1>
                 </figure>
-
                 <figure className="view">
                 <TotalStudents/>
                 </figure>

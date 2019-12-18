@@ -4,7 +4,7 @@ import {
     VALIDATOR_MINLENGTH
   } from '../util/validation';
 import { useForm } from '../hooks/formhook';
-import Input from '../form/Input';
+import Input from '../shared/form/Input';
 
 const AddStudent = () =>{
     const [formState, inputHandler] = useForm(
@@ -35,6 +35,7 @@ const AddStudent = () =>{
       };
     return(
         <form className="add-student-form" onSubmit={placeSubmitHandler}>
+        <h1>Add Student Form</h1>
         <Input
           className = "add-student-form__input"
           id="name"
@@ -43,7 +44,7 @@ const AddStudent = () =>{
           type="text"
           label="name"
           validators={[VALIDATOR_REQUIRE()]}
-          errorText="Please enter a valid name."
+          errorText="That's not a valid name.."
           onInput={inputHandler}
         />
         <Input
@@ -53,7 +54,7 @@ const AddStudent = () =>{
           element="input"
           label="level"
           validators={[VALIDATOR_MINLENGTH(5)]}
-          errorText="Please enter a valid level"
+          errorText="Pick from Math, Robotics, Python, & Web Development"
           onInput={inputHandler}
         />
         <Input
@@ -72,8 +73,8 @@ const AddStudent = () =>{
           placeholder="description"
           element="textarea"
           label="Description"
-          validators={[VALIDATOR_MINLENGTH(5)]}
-          errorText="Please enter a valid description (at least 5 characters)."
+          validators={[VALIDATOR_MINLENGTH(100)]}
+          errorText="Please enter a valid description, try to be concise about enthusiasm, skill, etc. (100 characters minimum)"
           onInput={inputHandler}
         />
         <button  className = "add-student-form__button" type="submit" disabled={!formState.isValid}>

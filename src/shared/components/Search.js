@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import '../sass/_base.scss'
+import '../../sass/_base.scss'
 const Search = props =>{
 
     let result = props.peoples.map(a => a.name);
