@@ -52,7 +52,6 @@ body {
     background-image: linear-gradient(to right bottom, var(--color-primary-light), var(--color-primary-dark));
     background-size: cover;
     background-repeat: no-repeat;
-
     min-height: 100vh;
 }
 
@@ -67,11 +66,10 @@ body {
 ////////////////////////////////////////
 // SEARCH
 .search {
-    flex: 0 0 40%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background-color: blue($color: #000000);
+    flex: 0 0 82%;
+    display: inline-block;
+    text-align: center;
 
     @media only screen and (max-width: $bp-smallest) {
         order: 1;
@@ -87,13 +85,13 @@ body {
         border: none;
         padding: .7rem 2rem;
         border-radius: 100px;
-        width: 90%;
+        width: 20%;
         transition: all .2s;
         margin-right: -3.25rem;
 
         &:focus {
             outline: none;
-            width: 100%;
+            width: 40%;
             background-color: var(--color-grey-light-3);
         }
 
@@ -116,12 +114,12 @@ body {
         }
 
         &:active {
-            transform: translateY(2px);
+            transform: translateY(-2px);
         }
     }
 
     &__icon {
-        height: 2rem;
+        height: 1rem;
         width: 2rem;
         fill: var(--color-grey-dark-3);
     }
@@ -574,8 +572,9 @@ body {
 }
 
 .student-view {
-    background-color: #fff;
+    margin-top: 2rem;
 
+    background-color: #fff;
     flex: 1;
 }
 

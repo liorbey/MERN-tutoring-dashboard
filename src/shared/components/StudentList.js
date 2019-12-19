@@ -1,23 +1,27 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import StudentItem from './StudentItem';
 
 const StudentList = props =>{
    
-    if (props.items.length === 0) {
+    if (props.res.length === 0) {
         return(<p>No Students Found!!</p>);
     }
     return(
+        <Fragment>
         <main className="student-view">
-            {props.items.map( student=>(
+            {props.res.map( student=>(
                 <StudentItem
                 key={student.id}
                 id={student.id}
                 name = {student.name}
+                subject = {student.subject}
                 level = {student.level}
                 address = {student.address}
                 location = {student.location}/>
             ))}
         </main>
+        </Fragment>
     );
 };
+
 export default StudentList

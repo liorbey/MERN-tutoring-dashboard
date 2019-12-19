@@ -17,6 +17,10 @@ const AddStudent = () =>{
             value: '',
             isValid: false
           },
+          subject: {
+            value: '',
+            isValid: false
+          },
           address: {
             value: '',
             isValid: false
@@ -31,7 +35,7 @@ const AddStudent = () =>{
     
       const placeSubmitHandler = event => {
         event.preventDefault();
-        console.log(formState.inputs); // send this to the backend!
+        console.log(formState.inputs); // goes to the backend
       };
     return(
         <form className="add-student-form" onSubmit={placeSubmitHandler}>
@@ -54,6 +58,16 @@ const AddStudent = () =>{
           element="input"
           label="level"
           validators={[VALIDATOR_MINLENGTH(5)]}
+          errorText="Pick an expertise level out of 10"
+          onInput={inputHandler}
+        />
+        <Input
+          className = "add-student-form__input"
+          id="subject"
+          placeholder="subject being tutored in"
+          element="input"
+          label="subject"
+          validators={[VALIDATOR_MINLENGTH(5)]}
           errorText="Pick from Math, Robotics, Python, & Web Development"
           onInput={inputHandler}
         />
@@ -73,7 +87,7 @@ const AddStudent = () =>{
           placeholder="description"
           element="textarea"
           label="Description"
-          validators={[VALIDATOR_MINLENGTH(100)]}
+          validators={[VALIDATOR_MINLENGTH(5)]}
           errorText="Please enter a valid description, try to be concise about enthusiasm, skill, etc. (100 characters minimum)"
           onInput={inputHandler}
         />

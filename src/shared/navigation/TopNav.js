@@ -1,6 +1,7 @@
 import React, { useState,useContext } from 'react';
 import '../../sass/_base.scss';
 import { AuthContext } from '../context/Auth-Context';
+import Search from '../components/Search';
 
 const TopNav = props => {
     const auth = useContext(AuthContext);
@@ -16,8 +17,6 @@ const TopNav = props => {
     };
 
     return(
-        <React.Fragment>
-
         <header className="header">
             <img src="/img/logo.png" alt="BeyTech logo" className="logo"/>
             <nav className="user-nav">
@@ -30,7 +29,6 @@ const TopNav = props => {
                 </div>
             </nav>
         </header>
-        </React.Fragment>
     );
 };
 
