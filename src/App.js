@@ -1,4 +1,4 @@
-import React, {useState,useCallback} from 'react';
+import React, {useState,useCallback, Suspense} from 'react';
 import {
   BrowserRouter as Router,
   Route,
@@ -9,11 +9,17 @@ import {
 import "./sass/_base.scss";
 import TopNav from './shared/navigation/TopNav';
 import SideBar from './shared/navigation/SideBar';
-import Stats from './pages/Stats';
-import Students from './pages/Students';
-import AddStudent from './pages/AddStudent';
 import Auth from './pages/Auth';
 import {AuthContext} from './shared/context/Auth-Context';
+//import Stats from './pages/Stats';
+//import Students from './pages/Students';
+//import AddStudent from './pages/AddStudent';
+const Stats = React.lazy(()=> import('./pages/Stats'));
+const Students = React.lazy(()=> import('./pages/Students'));
+const AddStudent = React.lazy(()=> import('./pages/AddStudent'));
+
+
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -59,7 +65,9 @@ function App() {
         <TopNav/>
           <div className="content">
             <SideBar/>
+            <Suspense fallback={<p >loading, hold on a minute :)</p>}>
             {routes}
+            </Suspense>
           </div>
       </div>
       </Router>
