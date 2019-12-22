@@ -10,7 +10,6 @@
 
 # production
 /build
-/backend/node_modules
 nodemon.json
 
 # misc
