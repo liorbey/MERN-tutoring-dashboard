@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {useHistory} from 'react-router-dom';
 import {
     VALIDATOR_REQUIRE,
     VALIDATOR_MINLENGTH
@@ -7,7 +8,8 @@ import { useForm } from '../hooks/formhook';
 import Input from '../shared/form/Input';
 
 const AddStudent = () =>{
-    const [formState, inputHandler] = useForm(
+  const [error, setError] = useState();
+  const [formState, inputHandler] = useForm(
         {
           name: {
             value: '',
@@ -32,10 +34,33 @@ const AddStudent = () =>{
         },
         false
       );
+      
+      const history = useHistory();
     
-      const placeSubmitHandler = event => {
+      const placeSubmitHandler = async event => {
         event.preventDefault();
-        console.log(formState.inputs); // goes to the backend
+        try{
+          const response = await fetch('http://localhost:5000/api/students', {
+            method: 'POST',
+            headers:{
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              name: formState.inputs.name.value,
+              level: formState.inputs.level.value,
+              subject: formState.inputs.subject.value,
+              address: formState.inputs.address.value,
+              description: formState.inputs.description.value
+            })
+          });
+          const responseData = await response.json();
+          if(!response.ok){
+            throw new Error(responseData.message);
+          }
+          history.push('/stats');
+        }catch(err){
+          setError(err.message|| 'something went not ok');
+        }
       };
     return(
         <form className="add-student-form" onSubmit={placeSubmitHandler}>
@@ -57,7 +82,7 @@ const AddStudent = () =>{
           placeholder="level"
           element="input"
           label="level"
-          validators={[VALIDATOR_MINLENGTH(5)]}
+          validators={[VALIDATOR_MINLENGTH(3)]}
           errorText="Pick an expertise level out of 10"
           onInput={inputHandler}
         />
