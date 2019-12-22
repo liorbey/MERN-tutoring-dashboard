@@ -39,7 +39,7 @@ app.use((error, req, res, next) => {
 mongoose
   .connect(`mongodb+srv://${process.env.Database_user}:${process.env.Database_pass}@cluster0-v86a7.mongodb.net/${process.env.Database_name}?retryWrites=true&w=majority`)
   .then(()=> {
-    app.listen(process.send.PORT || 5000);
+    app.listen(process.env.PORT || 5000);
   })
   .catch(err => {
     console.log(err);
