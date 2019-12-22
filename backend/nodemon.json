@@ -1,0 +1,8 @@
+{
+    "env":{
+        "Database_user": "lior123",
+        "Database_pass": "lior123",
+        "Database_name": "test",
+        "GOOGLE_API": "AIzaSyD5H9mwBqY5bEkijNKAXlgigh1mhQ1k0MU"
+    }
+}
