@@ -37,7 +37,7 @@ app.use((error, req, res, next) => {
 });
 
 mongoose
-  .connect('mongodb+srv://lior123:lior123@cluster0-v86a7.mongodb.net/test?retryWrites=true&w=majority')
+  .connect(`mongodb+srv://${process.env.Database_user}:${process.env.Database_pass}@cluster0-v86a7.mongodb.net/${process.env.Database_name}?retryWrites=true&w=majority`)
   .then(()=> {
     app.listen(5000);
   })

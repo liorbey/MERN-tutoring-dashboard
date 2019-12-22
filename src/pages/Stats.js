@@ -14,9 +14,6 @@ const Stats = () =>{
             </div>
 
             <div className="user-views">
-            <   figure className="view">
-                <h1>Pending Tasks: 10</h1>
-                </figure>
                 <figure className="view">
                 <TotalStudents/>
                 </figure>

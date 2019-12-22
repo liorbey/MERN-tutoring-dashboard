@@ -1,55 +1,37 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
+
 
 const TotalStudents = props =>{
-    const MOCKDATA = [{
-        id: "s1",
-        name: "Joe Rogan",
-        level: "8/10",
-        subject: "python",
-        address: '20 W 34th St, New York, NY 10001',
-        location: {
-        lat: 40.7484405,
-        lng: -73.9878584
-        },
-    },
-    {
-        id: "s2",
-        name: "roe jogan",
-        level: "8/10",
-        subject: "javascript",
-        address: '20 W 34th St, New York, NY 10001',
-        location: {
-        lat: 40.7484405,
-        lng: -73.9878584
-        },
-    },
-    {
-        id: "s3",
-        name: "William Matt",
-        level: "9/10",
-        subject: "robotics",
-        address: '20 W 34th St, New York, NY 10001',
-        location: {
-        lat: 40.7484405,
-        lng: -73.9878584
-        },
-    },
-    {
-        id: "s4",
-        name: "Bill Seal",
-        level: "6/10",
-        subject: "math",
-        address: '20 W 34th St, New York, NY 10001',
-        location: {
-        lat: 40.7484405,
-        lng: -73.9878584
-        },
-    },
-    ];
+    const [error, setError] = useState();
+    const [loadedUsers, setLoadedUsers] = useState();
+    const [isLoading, setIsLoading] = useState();
 
+    useEffect(()=>{
+        const sendRequest = async () => {
+            setIsLoading(true);
+            try{
+                const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/students`);
+                const responseData = await response.json();
+  
+                if (!response.ok){
+                    throw new Error(responseData.message);
+                }
+    
+                setLoadedUsers(responseData.students);
+            }catch(err){
+                setIsLoading(false)
+                setError(err.message);
+            }
+        }
+        sendRequest();
+    },[])
+    let data
+    if (loadedUsers){
+        data = loadedUsers.length
+    }
     return(
         //length of students
-        <h1>total students: {MOCKDATA.length}</h1>
+        <h1>total students: {data}</h1>
     );
 };
 

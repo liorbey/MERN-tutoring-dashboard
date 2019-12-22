@@ -1,7 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import '../../sass/_base.scss'
 import StudentList from './StudentList';
-import Students from '../../pages/Students';
 import ErrorModal from '../../shared/UI/ErrorModal';
 
 const Search = props =>{
@@ -17,7 +16,7 @@ const Search = props =>{
         const sendRequest = async () => {
             setIsLoading(true);
             try{
-                const response = await fetch('http://localhost:5000/api/students');
+                const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/students`);
                 const responseData = await response.json();
 
                 if (!response.ok){

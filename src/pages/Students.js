@@ -1,5 +1,4 @@
-import React, { Fragment } from 'react'
-import StudentList from '../shared/components/StudentList';
+import React from 'react'
 import Search from '../shared/components/Search';
 import '../sass/_base.scss'
 

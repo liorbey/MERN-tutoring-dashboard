@@ -25,7 +25,7 @@ const TopNav = props => {
                     {IsClicked ?<button onClick = {auth.logout} className="user-nav__drawer">sign out</button>: null}
                     </div>
                     <img src="img/user.jpg" alt="User" className="user-nav__user-photo"/>
-                    <span className="user-nav__user-name">Lior</span>
+                    <span className="user-nav__user-name">testuser</span>
                 </div>
             </nav>
         </header>
