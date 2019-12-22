@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, Fragment } from 'react';
 
 import Input from '../shared/form/Input';
 import Button from '../shared/form/Button';
@@ -9,11 +9,13 @@ import {
 } from '../util/validation';
 import { useForm } from '../hooks/formhook';
 import { AuthContext } from '../shared/context/Auth-Context';
+import ErrorModal from '../shared/UI/ErrorModal';
 import '../sass/_base.scss'
 
 const Auth = () => {
   const auth = useContext(AuthContext);
   const [isLoginMode, setIsLoginMode] = useState(true);
+  const [error, setError] = useState();
 
   const [formState, inputHandler, setFormData] = useForm(
     {
@@ -53,13 +55,38 @@ const Auth = () => {
     setIsLoginMode(prevMode => !prevMode);
   };
 
-  const authSubmitHandler = event => {
+  const authSubmitHandler = async event => {
     event.preventDefault();
-    console.log(formState.inputs);
-    auth.login();
+
+    if (isLoginMode){
+      try{
+        const response = await fetch('http://localhost:5000/api/users/login', {
+          method: 'POST',
+          headers:{
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            email: formState.inputs.email.value,
+            password: formState.inputs.password.value
+          })
+        });
+        const responseData = await response.json();
+        if(!response.ok){
+          throw new Error(responseData.message);
+        }
+        auth.login();
+      }catch(err){
+        setError(err.message|| 'something went not ok');
+      }
+    } 
+  };
+  const errorHandler = () => {
+    setError(null);
   };
 
   return (
+    <Fragment>
+      <ErrorModal error={error} onClear={errorHandler} />
       <form className="add-student-form" onSubmit={authSubmitHandler}>
         <h2>Login Required</h2>
         <hr />
@@ -101,6 +128,7 @@ const Auth = () => {
           {isLoginMode ? 'LOGIN' : 'SIGNUP'}
         </Button>
       </form>
+      </Fragment>
   );
 };
 

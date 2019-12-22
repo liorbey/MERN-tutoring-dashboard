@@ -39,32 +39,17 @@ function App() {
         <Route path="/add/student" exact>
           <AddStudent />
         </Route>
-        <Redirect to="/"/>
+        <Redirect to="/stats"/>
       </Switch>
     );
   } else {
     routes = (
-      /*<Switch>
+      <Switch>
         <Route path="/auth" exact>
           <Auth />
         </Route>
         <Redirect to="/auth" />
-      </Switch>*/
-      <Switch>
-      <Route path="/stats" exact>
-        <Stats />
-      </Route>
-      <Route path="/students">
-        <Students />
-      </Route>
-      <Route path="/students?">
-        <Students />
-      </Route>
-      <Route path="/add/student" exact>
-        <AddStudent />
-      </Route>
-      <Redirect to="/"/>
-    </Switch>
+      </Switch>
     );
   }
   return (
