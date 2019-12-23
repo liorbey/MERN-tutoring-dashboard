@@ -2,6 +2,7 @@ const express = require('express');
 const { check } = require('express-validator');
 
 const studentControllers = require('../controllers/student-controllers');
+const checkAuth = require('../middleware/check-auth');
 
 const router = express.Router();
 
@@ -9,6 +10,7 @@ router.get('/',studentControllers.getStudents)
 router.get('/:sid', studentControllers.getStudentById);
 
 //router.get('/user/:uid', studentControllers.getStudentsByUserId);
+router.use(checkAuth);
 
 router.post(
   '/',

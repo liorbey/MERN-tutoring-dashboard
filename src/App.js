@@ -11,6 +11,7 @@ import TopNav from './shared/navigation/TopNav';
 import SideBar from './shared/navigation/SideBar';
 import Auth from './pages/Auth';
 import {AuthContext} from './shared/context/Auth-Context';
+import {useAuth} from './hooks/auth-hook';
 import Loading from './shared/UI/Loading';
 //import Stats from './pages/Stats';
 //import Students from './pages/Students';
@@ -22,19 +23,12 @@ const AddStudent = React.lazy(()=> import('./pages/AddStudent'));
 
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  const login = useCallback(() => {
-    setIsLoggedIn(true);
-  }, []);
-
-  const logout = useCallback(() => {
-    setIsLoggedIn(false);
-  }, []);
+  
+  const { token, login, logout, userId } = useAuth();
 
   let routes;
 
-  if (isLoggedIn) {
+  if (token) {
     routes = (
       <Switch>
         <Route path="/stats" exact>
@@ -60,7 +54,15 @@ function App() {
     );
   }
   return (
-  <AuthContext.Provider value={{ isLoggedIn: isLoggedIn, login: login, logout: logout }}>
+    <AuthContext.Provider
+    value={{
+      isLoggedIn: !!token,
+      token: token,
+      userId: userId,
+      login: login,
+      logout: logout
+    }}
+  >
     <Router>
       <div className="container">
         <TopNav/>

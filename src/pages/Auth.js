@@ -46,7 +46,7 @@ const Auth = () => {
         if(!response.ok){
           throw new Error(responseData.message);
         }
-        auth.login();
+        auth.login(responseData.userId, responseData.token);
       }catch(err){
         setError(err.message|| 'something went not ok');
       } 
