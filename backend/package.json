@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "start": "node app.js"
   },
   "author": "",
   "license": "ISC",
@@ -15,7 +15,6 @@
     "express": "^4.17.1",
     "express-validator": "^6.2.0",
     "jsonwebtoken": "^8.5.1",
-    "mongodb": "file:node_modules/mongodb",
     "mongoose": "^5.8.2",
     "mongoose-unique-validator": "^2.0.3",
     "uuid": "^3.3.3"
