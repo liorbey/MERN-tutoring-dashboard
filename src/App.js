@@ -11,6 +11,7 @@ import TopNav from './shared/navigation/TopNav';
 import SideBar from './shared/navigation/SideBar';
 import Auth from './pages/Auth';
 import {AuthContext} from './shared/context/Auth-Context';
+import Loading from './shared/UI/Loading';
 //import Stats from './pages/Stats';
 //import Students from './pages/Students';
 //import AddStudent from './pages/AddStudent';
@@ -65,7 +66,7 @@ function App() {
         <TopNav/>
           <div className="content">
             <SideBar/>
-            <Suspense fallback={<p >loading, hold on a minute :)</p>}>
+            <Suspense fallback={<div><Loading asOverlay/></div>}>
             {routes}
             </Suspense>
           </div>
