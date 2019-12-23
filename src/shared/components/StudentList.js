@@ -17,6 +17,7 @@ const StudentList = props =>{
                 subject = {student.subject}
                 level = {student.level}
                 address = {student.address}
+                description = {student.description}
                 location = {student.location}/>
             ))}
         </main>

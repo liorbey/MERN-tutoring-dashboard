@@ -183,6 +183,34 @@ body {
     align-items: center;
     border-bottom: var(--line);
 
+    &__accordion{
+        background-color: #eee;
+        width: 100%;
+        color: #444;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        border: none;
+        outline: none;
+        transition: background-color 0.8s ease;
+
+    }
+    .active {
+        background-color: white;
+      }
+    &__accordion-content{
+        background-color: white;
+        overflow: hidden;
+        transition: max-height 0.7s ease;
+
+    }
+    &__accordion-text{
+        font-family: inherit;
+        font-weight: inherit;
+        font-size: inherit;
+        padding: 2rem;
+    }
+    
     &__heading {
         font-size: 2.25rem;
         font-weight: 300;
@@ -730,8 +758,8 @@ body {
   }
   
   .loading-spinner__overlay {
-    height: 100%;
-    width: 100%;
+    height: 120%;
+    width: 120%;
     position: absolute;
     top: 0;
     left: 0;
