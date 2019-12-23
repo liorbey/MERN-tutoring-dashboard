@@ -4,7 +4,7 @@ import StudentItem from './StudentItem';
 const StudentList = props =>{
    
     if (props.res.length === 0) {
-        return(<p>No Students Found!!</p>);
+        return(<p>search for someone :)</p>);
     }
     return(
         <Fragment>

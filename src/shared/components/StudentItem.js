@@ -26,7 +26,7 @@ const StudentItem = props =>{
         <React.Fragment>
             <Modal
             show={showMap}
-            header={props.address}
+            header={<div style ={{textAlign:"center"}}>{props.address}</div>}
             footer={<button className = "add-student-form__button" onClick={closeMapHandler}>CLOSE</button>}
         >
             <div style = {{  height: "25rem", width: "100%"}}>

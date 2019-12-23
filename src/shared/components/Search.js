@@ -22,20 +22,19 @@ const Search = props =>{
                 if (!response.ok){
                     throw new Error(responseData.message);
                 }
-    
                 setLoadedUsers(responseData.students);
+                setSearchResults(responseData.students);
             }catch(err){
                 setIsLoading(false)
                 setError(err.message);
             }
-
         }
         sendRequest();
-    },[searchTerm])
+    },[])
     
     
-    useEffect(() => {
-        if (loadedUsers) {
+    useEffect(props => {
+        if (searchTerm) {
             const results = loadedUsers.filter(person =>
                 person.name.toLowerCase().includes(searchTerm)
                 );
