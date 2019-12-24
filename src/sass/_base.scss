@@ -252,11 +252,28 @@ body {
         margin-left: 3rem;
         padding: 0 2.25rem;
         align-self: stretch;
-
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+
+        @media only screen and (max-width: $bp-small) {
+            padding: 0 1.5rem;
+        }
+    }
+    &__delete {
+        overflow: hidden;
+        background-color: var(--color-grey-dark-1);
+        color: #fff;
+        transition: max-width 0.7s ease;
+        padding-left: 1rem;
+        margin-right: 1rem;
+        align-self: stretch;
+        display: inline-flex;
+        flex: auto; 
+        flex-direction: column;
+        align-items: baseline;
+        justify-content: space-around;
 
         @media only screen and (max-width: $bp-small) {
             padding: 0 1.5rem;
@@ -277,6 +294,14 @@ body {
         font-size: .8rem;
         text-transform: uppercase;
 
+        @media only screen and (max-width: $bp-small) {
+            font-size: .5rem;
+        }
+    }
+    &__delete-description {
+        font-size: .8rem;
+        text-transform: uppercase;
+        padding-right: 1rem;
         @media only screen and (max-width: $bp-small) {
             font-size: .5rem;
         }

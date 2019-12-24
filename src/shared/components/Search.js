@@ -31,8 +31,14 @@ const Search = props =>{
         }
         sendRequest();
     },[])
+
     
-    
+    const placeDeletedHandler = deletedStudentId => {
+        setSearchResults(prevStudents =>
+        prevStudents.filter(student => student.id !== deletedStudentId)
+        );
+    };
+
     useEffect(props => {
         if (searchTerm) {
             const results = loadedUsers.filter(person =>
@@ -41,7 +47,6 @@ const Search = props =>{
             setSearchResults(results);
         }
         }, [searchTerm]);
-        
     const errorHandler = () =>{
         setError(null);
         }
@@ -60,7 +65,7 @@ const Search = props =>{
                     <use xlinkHref="img/sprite.svg#icon-magnifying-glass"/>
                 </svg>
             </button>
-            <StudentList res = {searchResults}/>
+            {loadedUsers && <StudentList res = {searchResults} onDeletePlace={placeDeletedHandler}/>}
             </form>
         </Fragment>
         );

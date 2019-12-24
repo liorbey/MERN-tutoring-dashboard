@@ -1,9 +1,14 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef,useContext} from 'react';
+import {useHistory} from 'react-router-dom';
+import { AuthContext } from '../../shared/context/Auth-Context';
 import Modal from '../UI/Modal';
 import Map from '../components/Map';
+
 import '../../sass/_base.scss'
 
 const StudentItem = props =>{
+    const history = useHistory();
+    const auth = useContext(AuthContext);
     const [showMap, setShowMap] = useState(false);
     const openMapHandler = () => setShowMap(true);
     const closeMapHandler = () => setShowMap(false);
@@ -11,15 +16,41 @@ const StudentItem = props =>{
     const [setActive, setActiveState] = useState("");
     const [setHeight, setHeightState] = useState("0px");
 
+    const[setActiveTwo, setActiveTwoState] = useState("");
+    const[setWidth, setWidthState] = useState("0px");
 
-    const toggleAccordion =() => {
+    const toggleAccordion = () => {
       setActiveState(setActive === "" ? "active" : "");
       setHeightState(
         setActive === "active" ? "0px" : `${content.current.scrollHeight}px`
       );  
     }
-
+    const toggleDelete = () => {
+        setActiveTwoState(setActiveTwo === "" ? "active": "")
+        setWidthState(
+            setActiveTwo === "active" ? "0px": `${deletion.current.scrollWidth}px`
+        );
+    }
+    const deletion = useRef(null);
     const content = useRef(null);
+
+    const confirmDeleteHandler = async () => {
+        try {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/students/${props.id}`, {
+                method: 'DELETE',
+                headers:{
+                  Authorization: 'Bearer ' + auth.token
+                }
+              });
+              const responseData = await response.json();
+                if(!response.ok){
+                    throw new Error(responseData.message);
+                }
+            history.push('/');
+            history.push('/students');
+            props.onDelete(props.id);
+        } catch (err) {}
+      };
 
 
     return(
@@ -34,7 +65,7 @@ const StudentItem = props =>{
             </div>
             </Modal>
         
-            <div className="student">
+            <div className="student" onDoubleClick={toggleDelete}>
             <div className={`student__accordion ${setActive}`} onMouseEnter={toggleAccordion} onMouseLeave={toggleAccordion}>
                     <h1 className="student__heading">
                         {props.name} 
@@ -68,11 +99,15 @@ const StudentItem = props =>{
                         </svg>
                         <div className="btn-inline" onClick={openMapHandler}>{props.address}</div>
                     </div>
-
                     <div className="student__rating">
                         <div className="student__rating-average">{props.level}</div>
                         <div className="student__rating-count">level</div>
                     </div>
+                   
+                    <div onClick={confirmDeleteHandler} ref={deletion} style = {{maxWidth: `${setWidth}`}} className="student__delete">
+                        <div className="student__delete-description">delete?</div>
+                    </div>
+                    
                 </div>
             </div>
             <div ref={content} style={{ maxHeight: `${setHeight}` }} className="student__accordion-content">

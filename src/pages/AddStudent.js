@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {useHistory} from 'react-router-dom';
 import {
     VALIDATOR_REQUIRE,
@@ -6,8 +6,11 @@ import {
   } from '../util/validation';
 import { useForm } from '../hooks/formhook';
 import Input from '../shared/form/Input';
+import { AuthContext } from '../shared/context/Auth-Context';
+
 
 const AddStudent = () =>{
+  const auth = useContext(AuthContext);
   const [error, setError] = useState();
   const [formState, inputHandler] = useForm(
         {
@@ -40,10 +43,11 @@ const AddStudent = () =>{
       const placeSubmitHandler = async event => {
         event.preventDefault();
         try{
-          const response = await fetch(process.env.REACT_APP_BACKEND_URL + '/students', {
+          const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/students`, {
             method: 'POST',
             headers:{
-              'Content-Type': 'application/json'
+              'Content-Type': 'application/json',
+              Authorization: 'Bearer ' + auth.token
             },
             body: JSON.stringify({
               name: formState.inputs.name.value,
@@ -51,7 +55,7 @@ const AddStudent = () =>{
               subject: formState.inputs.subject.value,
               address: formState.inputs.address.value,
               description: formState.inputs.description.value
-            })
+            }),
           });
           const responseData = await response.json();
           if(!response.ok){

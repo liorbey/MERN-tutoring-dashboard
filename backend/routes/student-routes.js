@@ -9,7 +9,6 @@ const router = express.Router();
 router.get('/',studentControllers.getStudents)
 router.get('/:sid', studentControllers.getStudentById);
 
-//router.get('/user/:uid', studentControllers.getStudentsByUserId);
 router.use(checkAuth);
 
 router.post(
@@ -47,6 +46,6 @@ router.patch(
 */
 
 //delete functionality
-//router.delete('/:sid', studentsControllers.deleteStudent);
+router.delete('/:sid', studentControllers.deleteStudent);
 
 module.exports = router;

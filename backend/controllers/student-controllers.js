@@ -80,7 +80,9 @@ const createStudent = async (req, res, next) => {
     address,
     description,
     location: coordinates,
+    creator: req.userData.userId
     }
+
   );
   try{
     const sess = await mongoose.startSession();
@@ -120,20 +122,46 @@ const updateStudent = (req, res, next) => {
 */
 
 //delete student
-/*
-const deleteStudent = (req, res, next) => {
+
+const deleteStudent = async (req, res, next) => {
   const studentId = req.params.sid;
-  if (!DUMMY_STUDENTS.find(s => s.id === studentId)) {
-    throw new HttpError('Could not find a student for that id.', 404);
+
+  let student;
+  try {
+    student = await Student.findById(studentId);
+  } catch (err) {
+    const error = new HttpError(
+      'Something went wrong, could not delete student.',
+      500
+    );
+    return next(error);
   }
-  DUMMY_STUDENTS = DUMMY_STUDENTS.filter(s => s.id !== studentId);
-  res.status(200).json({ message: 'Deleted student.' });
+
+  if (!student) {
+    const error = new HttpError('Could not find student for this id.', 404);
+    return next(error);
+  }
+
+  try {
+    const sess = await mongoose.startSession();
+    sess.startTransaction();
+    await student.deleteOne({ session: sess });
+    await student.save({ session: sess });
+    await sess.commitTransaction();
+  } catch (err) {
+    const error = new HttpError(
+      'Something went wrong, could not delete studentz.',
+      500
+    );
+    return next(error);
+  }
+
+  res.status(200).json({ message: 'Deleted place.' });
 };
-*/
 
 exports.getStudents = getStudents;
 exports.getStudentById = getStudentById;
 //exports.getStudentsByUserId = getStudentsByUserId;
 exports.createStudent = createStudent;
 //exports.updateStudent = updateStudent;
-//exports.deleteStudent = deleteStudent;
+exports.deleteStudent = deleteStudent;

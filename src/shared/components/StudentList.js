@@ -1,10 +1,11 @@
 import React, { Fragment } from 'react';
 import StudentItem from './StudentItem';
+import { Link } from 'react-router-dom';
 
 const StudentList = props =>{
    
     if (props.res.length === 0) {
-        return(<p>search for someone :)</p>);
+        return(<div>You haven't added any students yet, add some!</div>);
     }
     return(
         <Fragment>
@@ -18,7 +19,10 @@ const StudentList = props =>{
                 level = {student.level}
                 address = {student.address}
                 description = {student.description}
-                location = {student.location}/>
+                creatorId={student.creator}
+                location = {student.location}
+                onDelete={props.onDeleteStudent}
+                />
             ))}
         </main>
         </Fragment>
